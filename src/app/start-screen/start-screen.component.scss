@@ -1,0 +1,15 @@
+.start-screen {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #404040;
+	width: 100vw;
+	height: 100vh;
+	max-width: 100%;
+	background-image: url('./../../assets/img/table.jpg');
+	background-size: cover;
+
+	button {
+		cursor: pointer;
+	}
+}
