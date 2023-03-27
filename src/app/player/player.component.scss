@@ -4,11 +4,12 @@
 	align-items: center;
 	width: 200px;
 	padding: 12px;
-	background-color: rgb(255, 200, 0);
+	background-color: rgba(128, 128, 128, 0.879);
+	border-radius: 12px 0 0 12px;
 
 	img {
-		height: 100px;
-		width: 100px;
+		height: 50px;
+		width: 50px;
 		border-radius: 100%;
 	}
 
@@ -18,4 +19,8 @@
 			font-weight: bold;
 		}
 	}
+}
+
+.player-active {
+	background-color: rgb(255, 200, 0) !important;
 }

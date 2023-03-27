@@ -1,5 +1,6 @@
 .player-position {
 	position: absolute;
+	right: 0px;
 }
 
 .field {
@@ -57,4 +58,18 @@
 	100% {
 		transform: scale(1) translateY(-300px) translateX(75px) rotate(5deg);
 	}
+}
+
+.btn-add {
+	position: absolute;
+	bottom: 32px;
+	right: 32px;
+}
+
+.fix-to-bottom {
+	position: absolute;
+	bottom: 32px;
+	left: 32px;
+	right: 100px;
+	margin: auto;
 }

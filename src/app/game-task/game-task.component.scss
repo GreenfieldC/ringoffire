@@ -1,0 +1,8 @@
+mat-card {
+	max-height: 90px;
+	overflow-y: scroll;
+}
+
+.mat-mdc-card-content:last-child {
+	padding-bottom: unset;
+}
