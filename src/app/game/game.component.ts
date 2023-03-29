@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Firestore } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
 
 @Component({
 	selector: 'app-game',
