@@ -9,7 +9,7 @@ const routes: Routes = [
 		component: StartScreenComponent,
 	},
 	{
-		path: 'game',
+		path: 'game/:id', //:id is a placeholder for the game id
 		component: GameComponent,
 	},
 ];

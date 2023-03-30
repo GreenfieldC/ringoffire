@@ -2,7 +2,15 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Firestore } from '@angular/fire/firestore';
+import {
+	collection,
+	collectionData,
+	docData,
+	Firestore,
+} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { doc, setDoc } from 'firebase/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-game',
@@ -12,23 +20,51 @@ import { Firestore } from '@angular/fire/firestore';
 export class GameComponent implements OnInit {
 	firestore: Firestore = inject(Firestore);
 
+	games$: Observable<any[]>;
+
 	pickCardAnimation: boolean = false;
 	game: Game | undefined;
 	currentCard: string | undefined;
 
-	constructor(public dialog: MatDialog) {}
+	constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+		/* 	const aCollection = collection(this.firestore, 'games');
+		this.games$ = collectionData(aCollection);
+		this.games$.subscribe((game) => {
+			console.log('new games are:', game);
+		}); */
+	}
 
 	ngOnInit(): void {
 		this.newGame();
+		this.route.params.subscribe((params) => {
+			console.log(params['id']);
+
+			const aCollection = collection(this.firestore, 'games');
+			const aDoc = doc(aCollection, params['id']);
+
+			docData(aDoc, { idField: 'customIdName' }).subscribe(
+				(game: any) => {
+					console.log('new games are:', game);
+					this.game.currentPlayer = game.currentPlayer;
+					this.game.playedCards = game.playedCards;
+					this.game.players = game.players;
+					this.game.stack = game.stack;
+				}
+			);
+
+			/* this.games$ = collectionData(aCollection);
+			this.games$.subscribe((game) => {
+				console.log('new games are:', game);
+			}); */
+		});
 	}
 
 	newGame() {
 		this.game = new Game();
-		console.table(this.game.stack);
 	}
 
 	pickCard(): void {
-		if (this.game.players.length < 1) return;
+		if (this.game.players.length < 1) return; //no players
 		if (!this.pickCardAnimation && this.game?.stack.length > 0) {
 			this.currentCard = this.game.stack.pop();
 			console.log(this.currentCard);
