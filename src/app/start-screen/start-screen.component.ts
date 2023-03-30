@@ -17,9 +17,7 @@ export class StartScreenComponent implements OnInit {
 	newGame() {
 		//start game
 		let game = new Game();
-		console.log('game', game);
 		const coll = collection(this.firestore, 'games');
-		console.log('coll', coll);
 
 		setDoc(doc(coll), game.toJson()).then((gameInfo: any) => {
 			console.log('gameInfo is', gameInfo);
