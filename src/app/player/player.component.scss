@@ -2,7 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 200px;
+	width: 90px;
+	height: 90px;
 	padding: 12px;
 	background-color: rgba(128, 128, 128, 0.879);
 	border-radius: 12px 0 0 12px;
@@ -14,13 +15,25 @@
 	}
 
 	.player__name {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
 		span {
 			font-size: 1rem;
 			font-weight: bold;
+			text-align: center;
 		}
 	}
 }
 
 .player-active {
 	background-color: rgb(255, 200, 0) !important;
+}
+
+@media screen and (min-width: 600px) {
+	.player {
+		width: 200px;
+		padding: 8px;
+	}
 }
