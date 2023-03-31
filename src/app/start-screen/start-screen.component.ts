@@ -1,6 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { collection, setDoc, doc, Firestore } from '@angular/fire/firestore';
+import {
+	collection,
+	setDoc,
+	doc,
+	Firestore,
+	addDoc,
+} from '@angular/fire/firestore';
 import { Game } from 'src/models/game';
 
 @Component({
@@ -14,14 +20,12 @@ export class StartScreenComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	newGame() {
+	async newGame() {
 		//start game
-		let game = new Game();
-		const coll = collection(this.firestore, 'games');
+		let game = new Game(); //initiate game
+		const coll = collection(this.firestore, 'games'); //get collection of games
 
-		setDoc(doc(coll), game.toJson()).then((gameInfo: any) => {
-			console.log('gameInfo is', gameInfo);
-			this.router.navigateByUrl('/game' + gameInfo.id);
-		});
+		let gameInfo = await addDoc(coll, game.toJson()); // addDov returns gameinfo
+		this.router.navigateByUrl('/game/' + gameInfo.id);
 	}
 }

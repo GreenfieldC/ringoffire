@@ -31,23 +31,17 @@
 		/>
 
 		<img
-			*ngIf="pickCardAnimation"
-			[class.pick-card]="pickCardAnimation"
+			*ngIf="game.pickCardAnimation"
+			[class.pick-card]="game.pickCardAnimation"
 			class="pick-card-animation"
 			style="right: 25px"
-			src="./../../assets/img/cards/{{ currentCard }}.png"
+			src="./../../assets/img/cards/{{ game.currentCard }}.png"
 			alt=""
 		/>
 	</div>
-	<app-game-task [card]="currentCard" class="fix-to-bottom"></app-game-task>
+	<app-game-task [card]="game.currentCard" class="fix-to-bottom"></app-game-task>
 </div>
 
-<button
-	(click)="openDialog()"
-	mat-fab
-	color="primary"
-	title="add player"
-	class="btn-add"
->
+<button (click)="openDialog()" mat-fab color="primary" title="add player" class="btn-add">
 	<mat-icon>add</mat-icon>
 </button>
