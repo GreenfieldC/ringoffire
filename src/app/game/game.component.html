@@ -1,4 +1,4 @@
-<div class="all-players-container">
+<div *ngIf="!gameOver" class="all-players-container">
 	<app-player
 		(click)="editPlayer(i)"
 		*ngFor="let player of game.players; let i = index"
@@ -9,7 +9,7 @@
 	></app-player>
 </div>
 
-<div class="all-players-container-mobile">
+<div *ngIf="!gameOver" class="all-players-container-mobile">
 	<app-player-mobile
 		(click)="editPlayer(i)"
 		*ngFor="let player of game.players; let i = index"
@@ -61,6 +61,13 @@
 	<app-game-task [card]="game.currentCard" class="fix-to-bottom"></app-game-task>
 </div>
 
-<button (click)="openDialog()" mat-fab color="primary" title="add player" class="btn-add">
+<button
+	*ngIf="!gameOver"
+	(click)="openDialog()"
+	mat-fab
+	color="primary"
+	title="add player"
+	class="btn-add"
+>
 	<mat-icon>add</mat-icon>
 </button>
