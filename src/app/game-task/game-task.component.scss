@@ -12,5 +12,11 @@ mat-card {
 .mat-mdc-card-content {
 	display: block;
 	padding: unset !important;
-	max-width: 250px;
+	max-width: 218px;
+}
+
+@media screen and (min-width: 480px) {
+	.mat-mdc-card-content {
+		max-width: unset;
+	}
 }

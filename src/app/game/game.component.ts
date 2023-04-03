@@ -6,6 +6,7 @@ import { collection, collectionData, docData, Firestore } from '@angular/fire/fi
 import { Observable } from 'rxjs';
 import { doc, setDoc } from 'firebase/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { EditPlayerComponent } from '../edit-player/edit-player.component';
 
 @Component({
 	selector: 'app-game',
@@ -21,6 +22,7 @@ export class GameComponent implements OnInit {
 	currentCard: string | undefined; */
 	game: Game | undefined;
 	gameId: string | undefined;
+	gameOver: boolean = false;
 
 	constructor(private route: ActivatedRoute, public dialog: MatDialog) {
 		/* 	const aCollection = collection(this.firestore, 'games');
@@ -42,6 +44,7 @@ export class GameComponent implements OnInit {
 			docData(aDoc /* , { idField: 'customIdName' } */).subscribe((game: any) => {
 				console.log('new games are:', game);
 				this.game.currentPlayer = game.currentPlayer;
+				this.game.playerImages = game.playerImages;
 				this.game.playedCards = game.playedCards;
 				this.game.players = game.players;
 				this.game.stack = game.stack;
@@ -61,6 +64,7 @@ export class GameComponent implements OnInit {
 	}
 
 	pickCard(): void {
+		if (this.game.stack.length == 0) this.gameOver = true;
 		if (this.game.players.length < 1) return; //no players
 		if (!this.game.pickCardAnimation && this.game?.stack.length > 0) {
 			this.game.currentCard = this.game.stack.pop();
@@ -87,6 +91,7 @@ export class GameComponent implements OnInit {
 			console.log('The dialog was closed', name);
 			if (name && name.length > 0) {
 				this.game.players.push(name);
+				this.game.playerImages.push('warrior.png');
 				this.saveGame();
 			}
 		});
@@ -96,5 +101,26 @@ export class GameComponent implements OnInit {
 		const aCollection = collection(this.firestore, 'games');
 		const aDoc = doc(aCollection, this.gameId);
 		setDoc(aDoc, this.game.toJson());
+	}
+
+	editPlayer(id: number) {
+		const dialogRef = this.dialog.open(EditPlayerComponent, {});
+		dialogRef.afterClosed().subscribe((profilePicture: string) => {
+			if (!profilePicture) return;
+			if (profilePicture == 'DELETE') {
+				this.game.players.splice(id, 1);
+				this.game.playerImages.splice(id, 1);
+				this.saveGame();
+				return;
+			}
+			this.game.playerImages[id] = profilePicture;
+			this.saveGame();
+		});
+	}
+
+	restartGame() {
+		this.game = new Game();
+		this.gameOver = false;
+		this.saveGame();
 	}
 }

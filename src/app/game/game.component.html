@@ -1,22 +1,31 @@
 <div class="all-players-container">
 	<app-player
+		(click)="editPlayer(i)"
 		*ngFor="let player of game.players; let i = index"
 		[playerActive]="game.currentPlayer === i"
 		[name]="player"
+		[image]="game.playerImages[i]"
 		style="top: 50px"
 	></app-player>
 </div>
 
 <div class="all-players-container-mobile">
 	<app-player-mobile
+		(click)="editPlayer(i)"
 		*ngFor="let player of game.players; let i = index"
 		[playerActive]="game.currentPlayer === i"
 		[name]="player"
+		[image]="game.playerImages[i]"
 		style="top: 50px"
 	></app-player-mobile>
 </div>
 
-<div class="field">
+<div *ngIf="gameOver" class="game-over-container">
+	<h1 title="well done!">Well done!</h1>
+	<h2 (click)="restartGame()" title="restart?">Do you want more?</h2>
+</div>
+
+<div *ngIf="!gameOver" class="field">
 	<div class="stack">
 		<img
 			*ngFor="let card of [0, 1, 2, 3]; let i = index"
