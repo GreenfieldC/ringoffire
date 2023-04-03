@@ -11,7 +11,9 @@
 	width: 100vw;
 	height: 100vh;
 	max-width: 100%;
-	background-image: url('./../../assets/img/table.jpg');
+	background-image: url('./../../assets/img/warrior.jpg');
+	background-size: cover;
+	background-position: left;
 }
 
 .stack {
@@ -35,13 +37,13 @@
 
 .played-card {
 	right: 25px;
-	transform: scale(1) translateY(-300px) translateX(75px) rotate(5deg);
+	transform: scale(1) translateY(-250px) translateX(50px) rotate(5deg);
 }
 
 .pick-card {
 	transition: all 125ms ease-in-out;
 	animation: pick-card-animation 1s ease-in-out;
-	transform: scale(1) translateY(-300px) translateX(75px) rotate(5deg);
+	transform: scale(1) translateY(-250px) translateX(50px) rotate(5deg);
 }
 
 @keyframes pick-card-animation {
@@ -57,7 +59,7 @@
 	}
 
 	100% {
-		transform: scale(1) translateY(-300px) translateX(75px) rotate(5deg);
+		transform: scale(1) translateY(-250px) translateX(50px) rotate(5deg);
 	}
 }
 

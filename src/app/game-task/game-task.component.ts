@@ -38,7 +38,7 @@ export class GameTaskComponent implements OnInit, OnChanges {
 			description: '20 pushups',
 		},
 		{
-			title: 'Hanging Challenge together',
+			title: 'Hanging Challenge (all)',
 			description: 'Hang onto a bar as long as possible.',
 		},
 	];

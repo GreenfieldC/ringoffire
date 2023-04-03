@@ -1,15 +1,40 @@
 .start-screen {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	background-color: #404040;
 	width: 100vw;
 	height: 100vh;
 	max-width: 100%;
-	background-image: url('./../../assets/img/table.jpg');
+	background-image: url('./../../assets/img/warrior.jpg');
 	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	h1 {
+		color: #fff;
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	h2 {
+		color: #fff;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+	}
 
 	button {
+		font-family: 'Roboto', sans-serif;
 		cursor: pointer;
+		border: none;
+		border-radius: 5px;
+		height: 50px;
+		font-weight: bold;
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.188);
+			color: white;
+		}
 	}
 }
