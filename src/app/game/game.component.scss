@@ -1,3 +1,26 @@
+/* Mobile */
+.all-players-container-mobile {
+	display: flex;
+	width: 100vw;
+	gap: 15px;
+	overflow: auto;
+	position: absolute;
+	right: 0;
+	top: 0px;
+}
+
+/* Desktop */
+.all-players-container {
+	display: none;
+	flex-direction: column;
+	gap: 15px;
+	height: calc(100vh - 243px);
+	overflow: auto;
+	position: absolute;
+	right: 0;
+	top: 32px;
+}
+
 .player-position {
 	position: absolute;
 	right: 0px;
@@ -71,8 +94,33 @@
 
 .fix-to-bottom {
 	position: absolute;
-	bottom: 32px;
+	/* bottom: 32px;
 	left: 32px;
-	right: 100px;
+	right: 100px; */
+	bottom: 0;
+	left: 0;
+	right: 0;
 	margin: auto;
+}
+
+@media screen and (min-width: 480px) {
+	.all-players-container-mobile {
+		display: none;
+	}
+
+	.all-players-container {
+		display: flex;
+	}
+	.fix-to-bottom {
+		bottom: 32px;
+		/* 	left: 32px;
+		right: 32px; */
+		width: 400px;
+		margin: auto;
+	}
+
+	.btn-add {
+		top: 32px;
+		left: 32px;
+	}
 }

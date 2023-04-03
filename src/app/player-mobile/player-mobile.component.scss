@@ -1,12 +1,12 @@
-.player {
+.player-mobile {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 90px;
+	width: 60px;
 	height: 90px;
 	padding: 12px;
 	background-color: rgba(128, 128, 128, 0.724);
-	border-radius: 12px 0 0 12px;
+	border-radius: 0 0 12px 12px;
 
 	img {
 		height: 50px;
