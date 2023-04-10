@@ -15,7 +15,15 @@ mat-card {
 	max-width: 218px;
 }
 
+mat-card-title {
+	max-width: 77%;
+}
+
 @media screen and (min-width: 480px) {
+	mat-card-title {
+		max-width: 100%;
+	}
+
 	.mat-mdc-card-content {
 		max-width: unset;
 	}

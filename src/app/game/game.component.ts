@@ -35,14 +35,14 @@ export class GameComponent implements OnInit {
 	ngOnInit(): void {
 		this.newGame();
 		this.route.params.subscribe((params) => {
-			console.log(params['id']);
+			/* console.log(params['id']); */
 			this.gameId = params['id'];
 
 			const aCollection = collection(this.firestore, 'games');
 			const aDoc = doc(aCollection, this.gameId);
 
 			docData(aDoc /* , { idField: 'customIdName' } */).subscribe((game: any) => {
-				console.log('new games are:', game);
+				/* console.log('new games are:', game); */
 				this.game.currentPlayer = game.currentPlayer;
 				this.game.playerImages = game.playerImages;
 				this.game.playedCards = game.playedCards;
@@ -79,6 +79,7 @@ export class GameComponent implements OnInit {
 				this.game.pickCardAnimation = false;
 				this.saveGame();
 			}, 1000);
+			console.log(this.game.stack.length);
 		}
 
 		//take card

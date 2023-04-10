@@ -28,6 +28,21 @@
 	z-index: 1;
 }
 
+.more-than-five-cards-in-game-stack {
+	position: relative;
+	width: 120px;
+
+	img {
+		position: absolute;
+		cursor: pointer;
+		width: 120px;
+	}
+}
+
+.position-absolute {
+	position: absolute;
+}
+
 .field {
 	display: flex;
 	align-items: center;
