@@ -180,3 +180,41 @@ app-player-mobile {
 		left: 32px;
 	}
 }
+
+@media screen and (max-height: 768px) and (max-width: 480px) {
+	.more-than-five-cards-in-game-stack {
+		width: 80px !important;
+	}
+
+	img {
+		width: 80px !important;
+	}
+
+	.played-card {
+		right: 25px;
+		transform: scale(1) translateY(-160px) translateX(50px) rotate(5deg);
+	}
+
+	.pick-card {
+		transition: all 125ms ease-in-out;
+		animation: pick-card-animation-mobile 1s ease-in-out;
+		transform: scale(1) translateY(-160px) translateX(50px) rotate(5deg);
+	}
+
+	@keyframes pick-card-animation-mobile {
+		0% {
+			transform: scale(1);
+		}
+
+		40% {
+			transform: scale(1.5);
+		}
+		50% {
+			transform: scale(1.5);
+		}
+
+		100% {
+			transform: scale(1) translateY(-160px) translateX(50px) rotate(5deg);
+		}
+	}
+}
