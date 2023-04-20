@@ -8,11 +8,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class EditPlayerComponent implements OnInit {
 	allProfileImages: Array<string> = [
-		/* 	'dwarf.png',
-		'man_red.png',
-		'man_sunglasses.png',
-		'woman_blue.png',
-		'woman_grey.png', */
 		'warrior.png',
 		'warrior_horse.png',
 		'warrior_red.png',
